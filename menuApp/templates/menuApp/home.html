@@ -1,0 +1,41 @@
+{% extends 'menuApp/base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center mt-3 mb-3">
+        {% load static %}
+        <img src="{% static 'menuApp/elma_logo.png' %}" width="90" height="90" alt="" >
+    </div>
+    <ul class="list-group list-group-flush dish_list">
+        {% for meal in meals %}
+            <h2>{{ meal.1 }}</h2>
+                <li class="list-group-item dish_item">
+                    {% for m in item_list %}
+                        {% if m.meal_type == meal.0 %}
+                            <!--
+                            Poka ostavim tak
+                            <a href="{% url 'item_detail' m.pk %}">TEST</a>
+                            -->
+                            <h4 class="dish_name">{{ m.meal }}</h4>
+                            <div class="d-flex justify-content-between align-items-center dish_info">
+                                <p>{{ m.description }}</p>
+                                <span>{{ m.price }} TRY</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </li>
+          <br>
+        {% endfor %}
+    </ul>
+    <style>
+        .dish_list h2, .dish_name, .dish_info p, span, .menu_header {
+              background: -webkit-linear-gradient(90deg, rgba(38,171,96,1) 80%, rgba(1,25,12,1) 30%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+        }
+
+        .dish_item {
+              background: #01190C;
+        }
+
+    </style>
+{% endblock %}

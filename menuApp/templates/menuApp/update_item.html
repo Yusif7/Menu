@@ -1,0 +1,18 @@
+{% extends 'menuApp/base.html' %}
+
+
+{% block content %}
+<h1 style="margin-top: 5%;">Update dish</h1>
+<form method="POST"  class="create_class">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+<style>
+    .create_class{
+        margin: 5% auto;
+    }
+</style>
+
+{% endblock %}

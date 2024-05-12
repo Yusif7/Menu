@@ -1,0 +1,14 @@
+{% extends 'menuApp/base.html' %}
+
+{% block content %}
+
+    <h1>{{ item.meal }}</h1>
+    <p>{{ item.description }}</p>
+
+<a href="{% url 'update_item' item.pk %}">Update</a>
+<form method="POST" action="{% url 'delete_item' item.pk %}">
+        {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+
+{% endblock %}
